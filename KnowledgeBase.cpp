@@ -40,7 +40,7 @@ void KnowledgeBase::dropFact(vector<string> mems)
     
 }
 
-vector< vector<string>> KnowledgeBase::findFact(string assoc)
+vector< vector<string> > KnowledgeBase::findFact(string assoc)
 {
     bool found; //boolean for the event of finding a fact
     

@@ -1,9 +1,11 @@
 #include "Parser.h"
 
-Parser::Parser(){
+Parser::Parser()
+{
 }
 
-Parser::~Parser(){
+Parser::~Parser()
+{
 }
 
 /*void Parser::addLine(stringstream & p_ss)

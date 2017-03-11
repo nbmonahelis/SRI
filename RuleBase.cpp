@@ -12,7 +12,7 @@ RuleBase::RuleBase()
     cout<<"Dropped rules"<<endl;
 }*/
 
-void RuleBase::addRule(map<string, vector<string>> mems)
+void RuleBase::addRule(map<string, vector<string> > mems)
 {
     string assoc = mems["association"][0];
     

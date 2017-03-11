@@ -30,9 +30,9 @@ public:
     void dump(KnowledgeBase *kb, RuleBase *rb);
     void dumpRF(ostream &os, KnowledgeBase *kb, RuleBase *rb);
     void drop(string param);
-    vector<map<string,string>> inferenceFact(string, vector<string> &);
-    vector<map<string,string>> inferenceRule(string, vector<string> &);
-    map<string, vector<string>> findRule(string, int);
+    vector<map<string,string> > inferenceFact(string, vector<string> &);
+    vector<map<string,string> > inferenceRule(string, vector<string> &);
+    map<string, vector<string> > findRule(string, int);
     void inference(string);
     
     

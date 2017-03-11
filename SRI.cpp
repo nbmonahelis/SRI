@@ -1,8 +1,4 @@
 #include "SRI.h"
-#include "KnowledgeBase.h"
-#include "RuleBase.h"
-#include "Parser.h"
-#include "common.h"
 
 SRI::SRI()
 {
@@ -157,7 +153,7 @@ vector<map<string,string>> SRI::inferenceFact(string assoc, vector<string> & mem
 }
 
 //still need to implement 
-vector<map<string,string>> SRI::inferenceRule(string assoc, vector<string> & mems)
+vector<map<string,string> > SRI::inferenceRule(string assoc, vector<string> & mems)
 {
     vector<map<string, string>> x;
     

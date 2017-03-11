@@ -9,7 +9,7 @@ class KnowledgeBase
     
 public:
     
-    map<string, vector<vector<string>>> FactDictionary;
+    map<string, vector<vector<string> > > FactDictionary;
 
     KnowledgeBase();
     
@@ -17,7 +17,7 @@ public:
     void dropFact(vector<string> mems);
     void removeAllFactsWithKey(string key);
     int totalFacts();
-    vector<vector<string>> findFact(string assoc);
+    vector<vector<string> > findFact(string assoc);
     bool exists(string);
     
 };

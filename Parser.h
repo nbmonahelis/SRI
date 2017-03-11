@@ -37,10 +37,10 @@ public:
         return betterFind(haystack, found + 1, needle, n - 1);
     }
     
-    vector<string> addFact(string p_string);
-    map<string, vector<string>> addRule(string p_string);
-    vector<string> parseRule(string p_string);
-    vector<string> inference(string p_string); 
+    vector<string> addFact(string);
+    map<string, vector<string> > addRule(string);
+    vector<string> parseRule(string);
+    vector<string> inference(string); 
     
 };
 
