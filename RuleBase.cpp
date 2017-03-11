@@ -1,4 +1,4 @@
-#include "RuleBase.hpp"
+#include "RuleBase.h"
 
 RuleBase::RuleBase()
 {

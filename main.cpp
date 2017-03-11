@@ -1,7 +1,7 @@
 #include "common.h"
-#include "SRI.hpp"
-#include "KnowledgeBase.hpp"
-#include "RuleBase.hpp"
+#include "SRI.h"
+#include "KnowledgeBase.h"
+#include "RuleBase.h"
 
 void menu()
 {

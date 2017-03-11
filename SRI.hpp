@@ -1,11 +1,11 @@
-#ifndef Inference_hpp
-#define Inference_hpp
+#ifndef SRI_h
+#define SRI_h
 
 #include <stdio.h>
 #include "common.h"
-#include "RuleBase.hpp"
-#include "KnowledgeBase.hpp"
-#include "Parser.hpp"
+#include "RuleBase.h"
+#include "KnowledgeBase.h"
+#include "Parser.h"
 
 class KnowledgeBase;
 class RuleBase;
@@ -40,4 +40,4 @@ public:
 
 
 
-#endif /* Inference_hpp */
+#endif

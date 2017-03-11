@@ -1,5 +1,5 @@
-#ifndef KnowledgeBase_hpp
-#define KnowledgeBase_hpp
+#ifndef KnowledgeBase_h
+#define KnowledgeBase_h
 
 #include <stdio.h>
 #include "common.h"

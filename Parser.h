@@ -6,8 +6,8 @@
 //  Copyright © 2017 Babbie Monahelis. All rights reserved.
 //
 
-#ifndef Parser_hpp
-#define Parser_hpp
+#ifndef Parser_h
+#define Parser_h
 
 #include <stdio.h>
 #include "common.h"

@@ -1,13 +1,5 @@
-//
-//  RuleBase.hpp
-//  SRI
-//
-//  Created by Babbie Monahelis on 3/9/17.
-//  Copyright © 2017 Babbie Monahelis. All rights reserved.
-//
-
-#ifndef RuleBase_hpp
-#define RuleBase_hpp
+#ifndef RuleBase_h
+#define RuleBase_h
 
 #include <stdio.h>
 #include "common.h"

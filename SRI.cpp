@@ -1,15 +1,7 @@
-//
-//  Inference.cpp
-//  SRI
-//
-//  Created by Babbie Monahelis on 3/10/17.
-//  Copyright © 2017 Babbie Monahelis. All rights reserved.
-//
-
-#include "SRI.hpp"
-#include "KnowledgeBase.hpp"
-#include "RuleBase.hpp"
-#include "Parser.hpp"
+#include "SRI.h"
+#include "KnowledgeBase.h"
+#include "RuleBase.h"
+#include "Parser.h"
 #include "common.h"
 
 SRI::SRI()

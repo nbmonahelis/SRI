@@ -1,12 +1,4 @@
-//
-//  Parser.cpp
-//  SRI
-//
-//  Created by Babbie Monahelis on 3/10/17.
-//  Copyright © 2017 Babbie Monahelis. All rights reserved.
-//
-
-#include "Parser.hpp"
+#include "Parser.h"
 
 Parser::Parser(){
 }

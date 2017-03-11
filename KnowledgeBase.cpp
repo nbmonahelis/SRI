@@ -1,4 +1,4 @@
-#include "KnowledgeBase.hpp"
+#include "KnowledgeBase.h"
 
 KnowledgeBase::KnowledgeBase()
 {
