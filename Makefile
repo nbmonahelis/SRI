@@ -2,7 +2,7 @@
 #Katerina Chinnappan - kachinna
 # Makefile for CMPS 109 Programming Project
 #
-#       make                   makes StudentClient, InventoryClient, HeapClient
+#       make                   makes Main
 #------------------------------------------------------------------------------
 GPP = g++ -std=c++11
 GPPFLAGS = -O3 -ansi -Wall
