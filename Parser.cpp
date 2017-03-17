@@ -1,11 +1,17 @@
-#include "Parser.h"
+//
+//  Parser.cpp
+//  SRI
+//
+//  Created by Babbie Monahelis on 3/10/17.
+//  Copyright © 2017 Babbie Monahelis. All rights reserved.
+//
 
-Parser::Parser()
-{
+#include "Parser.hpp"
+
+Parser::Parser(){
 }
 
-Parser::~Parser()
-{
+Parser::~Parser(){
 }
 
 /*void Parser::addLine(stringstream & p_ss)

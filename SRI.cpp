@@ -1,4 +1,57 @@
-#include "SRI.h"
+//
+//  Inference.cpp
+//  SRI
+//
+//  Created by Babbie Monahelis on 3/10/17.
+//  Copyright © 2017 Babbie Monahelis. All rights reserved.
+//
+
+#include "SRI.hpp"
+#include "KnowledgeBase.hpp"
+#include "RuleBase.hpp"
+#include "Parser.hpp"
+#include "common.h"
+
+
+// mutexes
+mutex factMutex;
+mutex targ_returns;
+
+void factThread(vector<string> mems, int totalMembers, vector<string> factQuery, vector< map<string, string> > * ourFacts)
+{
+    if(totalMembers != mems.size())
+        return;
+    
+    map <string, string> FactMap;
+    
+    bool found = true;
+    
+    for (int i = 0; i < totalMembers; i++)
+    {
+        string temp = factQuery.at(i);
+        string fact = mems[i];
+        
+        if (FactMap.find(temp) == FactMap.end())
+            FactMap[temp] = fact;
+        
+        else
+        {
+            
+            if(FactMap[temp] != fact)
+            {
+                found = false;
+                break;
+            }
+        }
+    }
+    
+    factMutex.lock();
+    
+    if(found)
+        ourFacts->push_back(FactMap);
+    
+    factMutex.unlock();
+}
 
 SRI::SRI()
 {
@@ -27,7 +80,8 @@ void SRI::addFact(string factToAdd)
     kb->addFact(fact); //add it to the kb
 }
 
-void SRI::addRule(string ruleToAdd){
+void SRI::addRule(string ruleToAdd)
+{
     
     map<string, vector<string>> rule = parse->addRule(ruleToAdd); //send the rule input to parser
     rb->addRule(rule); //add it to tho rb
@@ -110,6 +164,32 @@ void SRI::inference(string assoc)
     
 }
 
+vector<map <string, string> > SRI::inferenceFact(string assoc, vector<string> & mems)
+{
+    ThreadContainer * threadsCont = new ThreadContainer();
+    
+    //bool found = true;
+    
+    vector<vector<string>> members = kb->findFact(assoc); //get the members of the fact
+    
+    int totalMembers = mems.size(); //get the total number so we can match them
+
+    vector< map<string,string>> ourFacts; //temp vector to hold the facts with this association
+
+    for (int i = 0; i < members.size(); i++)
+    {
+        threadsCont->insert( new thread(factThread, members[i], totalMembers, mems, &ourFacts));
+    }
+    
+    threadsCont->executeThreads();
+    
+    delete(threadsCont);
+    
+    return ourFacts;
+    
+}
+
+/*
 vector<map<string,string>> SRI::inferenceFact(string assoc, vector<string> & mems)
 {
     bool found = true;
@@ -151,9 +231,11 @@ vector<map<string,string>> SRI::inferenceFact(string assoc, vector<string> & mem
     }
     return ourFacts; //return it
 }
+*/
+
 
 //still need to implement 
-vector<map<string,string> > SRI::inferenceRule(string assoc, vector<string> & mems)
+vector<map<string,string>> SRI::inferenceRule(string assoc, vector<string> & mems)
 {
     vector<map<string, string>> x;
     

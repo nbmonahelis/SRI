@@ -1,13 +1,7 @@
-/****MAIN*****/
-/*1)Enter either FACT, RULE, LOAD, etc followed by the input: 
-example: FACT Father(Allen, Margaret)
-now it will ask you to enter a command again.
-2)enter the corresponding Roman number. For FACT, enter i, for RULE, enter ii, etc(just look up in the menu)
-*/
 #include "common.h"
-#include "SRI.h"
-#include "KnowledgeBase.h"
-#include "RuleBase.h"
+#include "SRI.hpp"
+#include "KnowledgeBase.hpp"
+#include "RuleBase.hpp"
 
 void menu()
 {
