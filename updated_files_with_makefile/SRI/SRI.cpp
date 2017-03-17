@@ -2,7 +2,48 @@
 #include "KnowledgeBase.h"
 #include "RuleBase.h"
 #include "Parser.h"
+#include "Threads.cpp"
 #include "common.h"
+
+// mutexes
+mutex factMutex;
+mutex targ_returns;
+
+void factThread(vector<string> mems, int totalMembers, vector<string> factQuery, vector< map<string, string> > * ourFacts)
+{
+    if(totalMembers != mems.size())
+        return;
+    
+    map <string, string> FactMap;
+    
+    bool found = true;
+    
+    for (int i = 0; i < totalMembers; i++)
+    {
+        string temp = factQuery.at(i);
+        string fact = mems[i];
+        
+        if (FactMap.find(temp) == FactMap.end())
+            FactMap[temp] = fact;
+        
+        else
+        {
+            
+            if(FactMap[temp] != fact)
+            {
+                found = false;
+                break;
+            }
+        }
+    }
+    
+    factMutex.lock();
+    
+    if(found)
+        ourFacts->push_back(FactMap);
+    
+    factMutex.unlock();
+}
 
 SRI::SRI()
 {
@@ -116,46 +157,30 @@ void SRI::inference(string assoc)
     
 }
 
-vector<map<string,string> > SRI::inferenceFact(string assoc, vector<string> & mems)
-{
-    bool found = true;
 
-    vector<vector<string> > members = kb->findFact(assoc); //get the members of the fact
+vector<map <string, string> > SRI::inferenceFact(string assoc, vector<string> & mems)
+{
+    ThreadContainer * threadsCont = new ThreadContainer();
+    
+    //bool found = true;
+    
+    vector<vector<string>> members = kb->findFact(assoc); //get the members of the fact
     
     int totalMembers = mems.size(); //get the total number so we can match them
-    
-    vector< map<string,string> > ourFacts; //temp vector to hold the facts with this association
-    
-    for(int i = 0; i < members.size(); i++)
+
+    vector< map<string,string>> ourFacts; //temp vector to hold the facts with this association
+
+    for (int i = 0; i < members.size(); i++)
     {
-        
-        if(totalMembers != members[i].size())
-            continue;
-        
-        map<string,string> factMap; //map of the facts that we found
-        
-        for(int j = 0; j < totalMembers; j++)
-        {
-            
-            string index = mems[j];
-            string fact = members[i][j];
-            
-            if(factMap.find(index) == factMap.end()) //match the fact with the members
-                factMap[index] = fact;
-            else
-            {
-                if(factMap[index] != fact) //break if we can't find it
-                {
-                    found = false;
-                    break;
-                }
-            }
-        }
-        
-        if(found) //add it to our vector
-            ourFacts.push_back(factMap);
+        threadsCont->insert( new thread(factThread, members[i], totalMembers, mems, &ourFacts));
     }
-    return ourFacts; //return it
+    
+    threadsCont->executeThreads();
+    
+    delete(threadsCont);
+    
+    return ourFacts;
+    
 }
 
 //still need to implement 

@@ -12,7 +12,7 @@ TARGET = Main
 all: $(TARGET)
 
 $(TARGET): $(TARGET).cpp
-	$(GPP) $(CFLAGS) -o $(TARGET) $(TARGET).cpp
+	$(GPP) $(CFLAGS) -o $(TARGET) -lpthread $(TARGET).cpp
 
 clean:
 	$(RM) $(TARGET)

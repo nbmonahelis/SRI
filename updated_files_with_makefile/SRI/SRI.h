@@ -6,6 +6,7 @@
 #include "RuleBase.h"
 #include "KnowledgeBase.h"
 #include "Parser.h"
+#include "Threads.h"
 
 class KnowledgeBase;
 class RuleBase;
@@ -20,10 +21,6 @@ private:
     
     
 public:
-    vector<thread> threads;
-    mutex mutexT;
-    bool joined;
-    int threadCount = 0;
     SRI();
     ~SRI();
     

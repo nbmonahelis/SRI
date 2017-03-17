@@ -10,6 +10,7 @@ now it will ask you to enter a command again.
 #include "KnowledgeBase.cpp"
 #include "RuleBase.cpp"
 #include "Parser.cpp"
+//#include "Threads.cpp"
 //#include "KnowledgeBase.h"
 //#include "RuleBase.h"
 
