@@ -6,7 +6,7 @@
 //  Copyright © 2017 Babbie Monahelis. All rights reserved.
 //
 
-#include "Threads.hpp"
+#include "Threads.h"
 
 ThreadContainer::ThreadContainer()
 {

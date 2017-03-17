@@ -6,6 +6,7 @@
 #include "RuleBase.h"
 #include "KnowledgeBase.h"
 #include "Parser.h"
+#include "Threads.h"
 
 class KnowledgeBase;
 class RuleBase;
