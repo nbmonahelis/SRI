@@ -10,6 +10,7 @@ class KnowledgeBase
 public:
     
     map<string, vector<vector<string> > > FactDictionary;
+ 
 
     KnowledgeBase();
     
@@ -19,6 +20,7 @@ public:
     int totalFacts();
     vector<vector<string> > findFact(string assoc);
     bool exists(string);
+    void dumpFact(ostream &os, string command);
     
 };
 

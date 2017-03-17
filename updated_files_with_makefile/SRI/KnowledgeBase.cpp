@@ -5,6 +5,29 @@ KnowledgeBase::KnowledgeBase()
     
 }
 
+void KnowledgeBase::dumpFact(ostream &os, string command)
+{
+  cout<<"DUMP"<<endl;
+    cout<<"dumping into dump.sri"<<endl;
+    //os<<command;
+    
+   cout<<"dropFact"<<endl;
+for (const auto p : FactDictionary) {
+    os<<p.first<< &p.second << '\n';
+}
+}
+
+/*ostream& operator<< (ostream &os)
+{
+
+	for(int i=0; i < fact->members.size(); i++){
+		string params = fact->members[i];
+		os << params <<",";
+	}
+	os << ")" << endl;
+    return os;
+}*/
+
 void KnowledgeBase::addFact(vector<string> mems)
 {
     string assoc = mems.front(); //stored the association at the front of the vector.
@@ -21,11 +44,16 @@ void KnowledgeBase::addFact(vector<string> mems)
         if ((find((*add.first).second.begin(), (*add.first).second.end(), mems) == (*add.first).second.end()))
             (*add.first).second.push_back(mems);
     }
+cout<<"addFact"<<endl;
+for (const auto p : FactDictionary) {
+    std::cout << "m[" << p.first << "] = " << &p.second << '\n';
+}
     
 }
 
 void KnowledgeBase::dropFact(vector<string> mems)
 {
+cout<<"Dropping"<<endl;
     string assoc = mems.front(); //grab the association
     mems.erase(mems.begin()); //delete it
     

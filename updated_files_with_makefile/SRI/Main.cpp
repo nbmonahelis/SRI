@@ -16,8 +16,8 @@ now it will ask you to enter a command again.
 void menu()
 {
     SRI * sriobj = new SRI();
-    KnowledgeBase *kb = new KnowledgeBase();
-    RuleBase *rb = new RuleBase();
+   // KnowledgeBase *kb = new KnowledgeBase();
+   // RuleBase *rb = new RuleBase();
     
     string command, command1, command2; //command
     string input;
@@ -56,7 +56,7 @@ void menu()
             sriobj->load(command1);
         }
         else if(command2 == "iv"){
-            sriobj->dump(kb, rb);
+            sriobj->dump(command1);
             cout<<"DUMPING KB AND RB"<<endl;
         }
         

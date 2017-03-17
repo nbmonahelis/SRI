@@ -31,6 +31,21 @@ void SRI::addFact(string factToAdd)
     kb->addFact(fact); //add it to the kb
 }
 
+void SRI::drop(string param)
+{
+	/*if(kb->FactDictionary.find(param)!=kb->FactDictionary.end())
+    {
+        cout<<"param dropped: "<<param<<endl;
+        kb->FactDictionary.erase(param);
+    }
+if(rb->RuleDictionary.find(param)!= rb->RuleDictionary.end())
+        rb->RuleDictionary.erase(param);
+    cout<<"Dropped rules"<<endl;*/
+vector<string> fact = parse->addFact(param);
+kb->dropFact(fact);
+ 
+}
+
 void SRI::addRule(string ruleToAdd){
     
     map<string, vector<string> > rule = parse->addRule(ruleToAdd); //send the rule input to parser
@@ -41,39 +56,29 @@ void SRI::addRule(string ruleToAdd){
 
 {   cout<<"DUMP"<<endl;
     cout<<"dumping into dump.sri"<<endl;
+    cout<<"Test"<<endl;
     
-    for(auto iteratorx = kb->FactDictionary.begin(); iteratorx != kb->FactDictionary.end(); iteratorx++)
+    for(map<string, vector<vector<string> > >::iterator it = kb->FactDictionary.begin(); it != kb->FactDictionary.end(); it++)
     {
-        os<<&iteratorx->second<<endl;
+        cout<<"Hello"<<endl;
+        cout<<it->first<<endl;
     }
     
     for(auto iteratorx = brules->RuleDictionary.begin(); iteratorx != brules->RuleDictionary.end(); iteratorx++)
     {
-        os<<&iteratorx->second<<endl;
+        os<<iteratorx->second<<endl;
     }
 }*/
 
-void SRI::dump(KnowledgeBase *kb, RuleBase *rb)
+void SRI::dump(string command1)
 {
     ofstream out;
     //open file
     out.open("dump.sri");
+    kb->dumpFact(out, command1);
     //dumpRF(out, kb, rb);
     
 }
-
-void SRI::drop(string param)
-{
-	if(kb->FactDictionary.find(param)!=kb->FactDictionary.end())
-    {
-        cout<<"param dropped: "<<param<<endl;
-        kb->FactDictionary.erase(param);
-    }
-if(rb->RuleDictionary.find(param)!= rb->RuleDictionary.end())
-        rb->RuleDictionary.erase(param);
-    //cout<<"Dropped rules"<<endl;
- 
-    }
 
 void SRI::load(string line)
 {
@@ -91,7 +96,7 @@ void SRI::load(string line)
 
 void SRI::inference(string assoc)
 {
-    
+    cout<<"Inference"<<endl;
     vector<string> statements = parse->inference(assoc);
     string relation = statements[0]; //aka the association
     statements.erase(statements.begin());
@@ -119,6 +124,9 @@ void SRI::inference(string assoc)
             }
         }
     }
+   else if(!kb->exists(relation)){
+         cout<<"Fact is not found."<<endl;
+   }
     
 }
 

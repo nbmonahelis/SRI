@@ -20,6 +20,10 @@ private:
     
     
 public:
+    vector<thread> threads;
+    mutex mutexT;
+    bool joined;
+    int threadCount = 0;
     SRI();
     ~SRI();
     
@@ -27,7 +31,7 @@ public:
     void addFact(string);
     void addRule(string);
     void load(string);
-    void dump(KnowledgeBase *kb, RuleBase *rb);
+    void dump(string command);
     void dumpRF(ostream &os, KnowledgeBase *kb, RuleBase *rb);
     void drop(string param);
     vector<map<string,string> > inferenceFact(string, vector<string> &);
