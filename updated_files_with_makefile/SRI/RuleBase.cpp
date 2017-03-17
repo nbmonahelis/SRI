@@ -27,7 +27,7 @@ void RuleBase::addRule(map<string, vector<string> > mems)
         }
     }
     
-    cout << "Added rule.\n";
+    cout << "Added rule into RB.\n";
     
 }
 

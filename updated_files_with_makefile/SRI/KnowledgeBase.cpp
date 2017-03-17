@@ -17,19 +17,10 @@ for (const auto p : FactDictionary) {
 }
 }
 
-/*ostream& operator<< (ostream &os)
-{
-
-	for(int i=0; i < fact->members.size(); i++){
-		string params = fact->members[i];
-		os << params <<",";
-	}
-	os << ")" << endl;
-    return os;
-}*/
 
 void KnowledgeBase::addFact(vector<string> mems)
 {
+    
     string assoc = mems.front(); //stored the association at the front of the vector.
     
     mems.erase(mems.begin()); //delete the association because we don't need it anymore
@@ -44,7 +35,7 @@ void KnowledgeBase::addFact(vector<string> mems)
         if ((find((*add.first).second.begin(), (*add.first).second.end(), mems) == (*add.first).second.end()))
             (*add.first).second.push_back(mems);
     }
-cout<<"addFact"<<endl;
+cout<<"Fact loaded into KB"<<endl;
 for (const auto p : FactDictionary) {
     std::cout << "m[" << p.first << "] = " << &p.second << '\n';
 }

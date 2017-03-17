@@ -52,46 +52,32 @@ void SRI::addRule(string ruleToAdd){
     rb->addRule(rule); //add it to tho rb
 }
 
-/*void SRI::dumpRF(ostream &os, KnowledgeBase *kb, RuleBase *brules)
-
-{   cout<<"DUMP"<<endl;
-    cout<<"dumping into dump.sri"<<endl;
-    cout<<"Test"<<endl;
-    
-    for(map<string, vector<vector<string> > >::iterator it = kb->FactDictionary.begin(); it != kb->FactDictionary.end(); it++)
-    {
-        cout<<"Hello"<<endl;
-        cout<<it->first<<endl;
-    }
-    
-    for(auto iteratorx = brules->RuleDictionary.begin(); iteratorx != brules->RuleDictionary.end(); iteratorx++)
-    {
-        os<<iteratorx->second<<endl;
-    }
-}*/
-
 void SRI::dump(string command1)
 {
     ofstream out;
     //open file
     out.open("dump.sri");
     kb->dumpFact(out, command1);
-    //dumpRF(out, kb, rb);
     
 }
 
-void SRI::load(string line)
+void SRI::load(string fileName)
 {
-    
-    //ifstream readFile(line);
-	ifstream readFile(line.c_str());
-    string fileLine;
-    
-    while(getline(readFile, fileLine))
-    {
-        stringstream stringsToLoad(fileLine);
-        inputLine(stringsToLoad);
-    }
+   cout<<"Loading from "<<fileName<<endl;
+   string line;		// empty string to load the input file's contents
+   string left;
+   string ruleDetector;
+   ifstream readFile(fileName);
+
+   while(getline(readFile,line)){	// read from input file, put contents into line
+		stringstream iss(line); //put the contents of line into an ss
+		getline(iss,left,')');	// read from ss object, put contents into left side until ')'
+		getline(iss,ruleDetector,' ');
+		stringstream iss2(line);
+		stringstream iss3(left);
+                if(ruleDetector ==":-") addRule(line);
+                else addFact(line);
+     }
 }
 
 void SRI::inference(string assoc)
