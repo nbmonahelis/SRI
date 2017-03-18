@@ -1,6 +1,7 @@
 #ifndef __includes_h__
 #define __includes_h__
 #include "common.h"
+
 #include <execinfo.h>
 #include <stdio.h>
 #include <errno.h>
@@ -35,7 +36,7 @@
 #include <arpa/inet.h>
 #include <ctype.h>
 #include <dirent.h>
-//#include <mysql/mysql.h>
+#include <mysql/mysql.h>
 #include<netdb.h>
 #include<netinet/udp.h>
 #include<netinet/tcp.h>
@@ -132,6 +133,3 @@
 #define SHARED_LIB_NODE_TYPE                    'r'
 
 #endif
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
