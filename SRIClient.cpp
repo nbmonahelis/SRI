@@ -16,6 +16,18 @@ SRIClient::SRIClient(){
 	client = new TCPSocket("0.0.0.0",9999,100);
 }
 
+void SRIClient::lookInput(){
+	char* local = client.getRemoteAddress();
+	TCPSocket* tcpServer = new TCPSocket(local,9999,100);
+
+	int bytes = 1024;
+	char buffer[bytes];
+	buffer[0] = 'x';
+	int readIn = tcpServer->writeToSocket(buffer, bytes);
+
+    readIn =  tcpServer.readFromSocket(buffer, bytes);
+
+}
 void SRIClient::loadFile(string fileName){
 
 	string input;
@@ -30,18 +42,7 @@ void SRIClient::loadFile(string fileName){
 	file.close();
 }
 
-void SRIClient::lookInput(){
-	char* local = client.getRemoteAddress();
-	TCPSocket* tcpServer = new TCPSocket(local,9999,100);
 
-	int bytes = 1024;
-	char buffer[bytes];
-	buffer[0] = 'x';
-	int readIn = tcpServer->writeToSocket(buffer, bytes);
-
-    readIn =  tcpServer.readFromSocket(buffer, bytes);
-
-}
 
 int main(){
 	SRIClient* mainClient = new Client();
