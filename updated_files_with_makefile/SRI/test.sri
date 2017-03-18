@@ -1,54 +1,54 @@
 PLANET(Earth,Sun)
 
-PLANET1(Mars,Sun)
+PLANET(Mars,Sun)
 
-PLANET2(Mercury,Sun)
+PLANET(Mercury,Sun)
 
-PLANET3(Jupiter,Sun)
+PLANET(Jupiter,Sun)
 
-PLANET4(Saturn,Sun)
+PLANET(Saturn,Sun)
 
-PLANET5(Pluto,Sun)
+PLANET(Pluto,Sun)
 
-PLANET6(Gilese,Sirius)
+PLANET(Gilese,Sirius)
 
-PLANET7(Arial,Sirius)
+PLANET(Arial,Sirius)
 
-PLANET8(Proxima,Sirius)
+PLANET(Proxima,Sirius)
 
-PLANET9(a,Trapist)
+PLANET(a,Trapist)
 
-PLANET10(Jonix,Bellatrix)
+PLANET(Jonix,Bellatrix)
 
-PLANET11(b,Trapist)
+PLANET(b,Trapist)
 
-PLANET12(c,Trapist)
+PLANET(c,Trapist)
 
-PLANET13(Floron,Bellatrix)
+PLANET(Floron,Bellatrix)
 
 MOON(Moon,Earth)
 
-MOON1(Phobos,Mars)
+MOON(Phobos,Mars)
 
-MOON2(Deimos,Mars)
+MOON(Deimos,Mars)
 
-MOON3(Cheron,Pluto)
+MOON(Cheron,Pluto)
 
-MOON4(Io,Jupiter)
+MOON(Io,Jupiter)
 
-MOON5(Titan,Saturn)
+MOON(Titan,Saturn)
 
-MOON6(Marco,Arial)
+MOON(Marco,Arial)
 
-MOON7(a,t2)
+MOON(a,t2)
 
-MOON8(b3,Floron)
+MOON(b3,Floron)
 
-MOON9(Litmus,Jonix)
+MOON(Litmus,Jonix)
 
-MOON10(Polo,Marco)
+MOON(Polo,Marco)
 
-MOON11(Test,Litmus)
+MOON(Test,Litmus)
 
 
 
