@@ -4,17 +4,17 @@
 #include "SRI.h"
 
 int main(int argc, char** argv) {
-
+	
+    TCPServerSocket * tcp = new TCPServerSocket("127.0.0.1",9999,100);	
     GarbageCollector * gC = new GarbageCollector();
 
-    TCPServerSocket * tcpServerSocket = new TCPServerSocket("127.0.0.1",9999,100);
 
-	tcpServerSocket->initializeSocket();
+	tcp->initializeSocket();
 
 	while (true) {
 
 //if timeoutSec and timeoutMilli are zeros the method will behave in a blocking mode
-        TCPSocket * tcpSocket = tcpServerSocket->getConnection(0,0,-1,-1);
+        TCPSocket * tcpSocket = tcp->getConnection(0,0,-1,-1);
 
 		if (tcpSocket == NULL) break; //otherwise won't work
 
@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
 	}
 
     delete(gC);
-	delete(tcpServerSocket);
+	delete(tcp);
 
 	return(0);
 }
